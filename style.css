@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #aaaaaa33;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-image: url("images/background.jpg");
+    background-size: 100%;  
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+.container {
+    background: rgba(2, 41, 83, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 50px auto;
+    color:#ffd725
+}
+#scrolling-text {
+    position: fixed; /* ثابت می‌ماند */
+    left: -100%; /* شروع از بیرون صفحه از سمت چپ */
+    bottom: 65%; /* موقعیت پایین صفحه */
+    font-size: 18px; /* اندازه فونت */
+    color: #ffd725; /* رنگ متن */
+    font-family: Arial, sans-serif; /* نوع فونت */
+    white-space: nowrap; /* جلوگیری از شکستن خط متن */
+    animation: scroll-right 10s linear infinite; /* انیمیشن حرکت از چپ به راست */
+}
+
+/* تعریف انیمیشن حرکت به راست */
+@keyframes scroll-right {
+    0% {
+        left: -100%; /* شروع از بیرون صفحه سمت چپ */
+    }
+    100% {
+        left: 100%; /* حرکت به سمت راست صفحه */
+    }
+}
+
