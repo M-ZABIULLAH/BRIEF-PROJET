@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-// خواندن نام شهر از فایل conf.json
-fetch("conf.json")
+
+fetch("conf.json") // to read the name of city
   .then(response => response.json())
   .then(data => {
     const ville = data.ville;
@@ -8,7 +7,9 @@ fetch("conf.json")
   })
   .catch(error => console.error("Erreur de lecture du fichier conf.json:", error));
 
-// تابع دریافت اطلاعات آب و هوا از API
+
+
+// to receved the information of the weather from API
 function getWeather(city) {
     const API_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=GELK8FTX6S6569XZUW4JPQX6F&contentType=json`;
 
@@ -18,10 +19,11 @@ function getWeather(city) {
             document.getElementById("city-name").textContent = `Ville: ${data.address}`;
             document.getElementById("temperature").textContent = `Température: ${data.currentConditions.temp}°C`;
             document.getElementById("weather-description").textContent = `Description: ${data.currentConditions.conditions}`;
-            // نمایش آیکون وضعیت هوا
+
+            // to show the icon of the weather 
 const weatherIcon = getWeatherIcon(data.currentConditions.conditions);
 document.getElementById("weather-icon").innerHTML = weatherIcon;
-// تابع برای دریافت آیکون مناسب
+// fanction to find the best icon
 function getWeatherIcon(condition) {
     const icons = {
     "Clear": "☀️",
@@ -31,7 +33,7 @@ function getWeatherIcon(condition) {
     "Snow": "❄️",
     "Storm": "⛈️"
     };
-    return icons[condition] || "❓"; // اگر وضعیت هوا پیدا نشد، علامت سوال نمایش دهد
+    return icons[condition] || "❓"; // if the condition of the weather did not find, show the ?
     }
         })
         .catch(error => console.error("Erreur de récupération des données météo:", error));
@@ -39,68 +41,9 @@ function getWeatherIcon(condition) {
 
 
 
-// بروزرسانی هر ساعت
+// update of condition par/h
 setInterval(() => {
     fetch("conf.json")
       .then(response => response.json())
       .then(data => getWeather(data.ville));
-}, 3600000); // 3600000 میلی‌ثانیه = 1 ساعت
-=======
-// خواندن نام شهر از فایل conf.json
-fetch("conf.json")
-  .then(response => response.json())
-  .then(data => {
-    const ville = data.ville;
-    getWeather(ville);
-  })
-  .catch(error => console.error("Erreur de lecture du fichier conf.json:", error));
-
-// تابع دریافت اطلاعات آب و هوا از API
-function getWeather(city) {
-    const API_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=GELK8FTX6S6569XZUW4JPQX6F&contentType=json`;
-
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("city-name").textContent = `Ville: ${data.address}`;
-            document.getElementById("temperature").textContent = `Température: ${data.currentConditions.temp}°C`;
-            document.getElementById("weather-description").textContent = `Description: ${data.currentConditions.conditions}`;
-        })
-        .catch(error => console.error("Erreur de récupération des données météo:", error));
-}
-function getWeather(city) {
-    const API_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=GELK8FTX6S6569XZUW4JPQX6F&contentType=json`;
-
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("city-name").textContent = `Ville: ${data.address}`;
-            document.getElementById("temperature").textContent = `Température: ${data.currentConditions.temp}°C`;
-            document.getElementById("weather-description").textContent = `Description: ${data.currentConditions.conditions}`;
-// نمایش آیکون وضعیت هوا
-const weatherIcon = getWeatherIcon(data.currentConditions.conditions);
-document.getElementById("weather-icon").innerHTML = weatherIcon;
-})
-.catch(error => console.error("Erreur de récupération des données météo:", error));
-}
-
-// تابع برای دریافت آیکون مناسب
-function getWeatherIcon(condition) {
-const icons = {
-"Clear": "☀️",
-"Partially cloudy": "⛅",
-"Cloudy": "☁️",
-"Rain": "🌧️",
-"Snow": "❄️",
-"Storm": "⛈️"
-};
-return icons[condition] || "❓"; // اگر وضعیت هوا پیدا نشد، علامت سوال نمایش دهد
-}
-
-// بروزرسانی هر ساعت
-setInterval(() => {
-    fetch("conf.json")
-      .then(response => response.json())
-      .then(data => getWeather(data.ville));
-}, 3600000); // 3600000 میلی‌ثانیه = 1 ساعت
->>>>>>> 2944fb97af91b8e4eacc45ee263eb7b8a66236d0
+}, 3600000); // 3600000 ms = 1 hours
