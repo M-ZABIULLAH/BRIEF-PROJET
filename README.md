@@ -38,7 +38,7 @@ cd meteo-transports
 Ouvrir `conf.json` et définir la ville souhaitée :
 ```json
 {
-    "ville": "Paris"
+    "ville": "Valenciennes"
 }
 ```
 
@@ -62,9 +62,3 @@ fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/service
 
 ## Auteurs
 - **Zabiullah Mohammadi**
-- Contact : [Votre Email]
-
-## Licence
-Ce projet est sous licence MIT. Vous êtes libre de l'utiliser et de le modifier selon vos besoins.
-
-
